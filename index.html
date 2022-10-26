@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comandos Git</title>
+    <link
+      rel="shortcut icon"
+      href="https://cdn-icons-png.flaticon.com/512/8016/8016946.png"
+      class="rel"
+    />
+    <link rel="stylesheet" href="./CSS/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Comandos GIT</h1>
+      <summary>
+        Uso de comandos git, comandos basicos y explicaciones
+      </summary>
+    </header>
+
+    <ul class="comandos_basicos">
+      <!-- <li>git -v<p>Muestra la version de git</p></li> -->
+      <li>
+        git init
+        <p>
+          Creamos un repositorio de la carpeta actual, se puede crear una
+          carpeta colocando un nombre después del init
+        </p>
+      </li>
+      <li>
+        git status
+        <p>
+          Muestra el estado de los archivos o directorios, en
+          <span class="lRoja">rojo</span> si solo se encuentran en el
+          <span class="lRoja">working directory</span> y
+          <span class="lVerde">verde</span> si está en el
+          <span class="lVerde">Staging area</span>
+        </p>
+      </li>
+      <li>
+        git add [file]
+        <p>
+          Agrega el archivo al <span class="lVerde">Staging area</span>, si
+          ponemos un punto agregamos todo lo que esté en la carpeta o
+          <span class="lRoja">working directory</span>
+        </p>
+      </li>
+      <li>
+        git commit -m "message"
+        <p>
+          Mandamos lo que esté en el <span class="lVerde">Staging area</span> al
+          <span class="lAzul">git repository</span>
+        </p>
+      </li>
+      <li>
+        git commit --ammend
+        <p>
+          A veces hacemos un commit, pero resulta que no queríamos mandarlo
+          porque faltaba algo más. Para esto, se debe hacer los cambios
+          necesario, hacer un git add y posterior a esto, ejecutar el comando
+          git commit --amend
+        </p>
+      </li>
+      <li>
+        git config --list
+        <p>Muestra la configuración de git</p>
+      </li>
+      <li>
+        git config --list --show-origin
+        <p>Muestra donde están las configuraciones guardadas</p>
+      </li>
+      <li>
+        git config --global user.name "NombreUser"
+        <p>Se establece el nombre del usuario</p>
+      </li>
+      <li>
+        git config --global user.email "user@email.com"
+        <p>Se establece el correo del usuario</p>
+      </li>
+      <p>
+        Ahora si por algún motivo te equivocaste en el nombre o email lo puedes
+        modificar de la siguiente manera:
+      </p>
+      <li>
+        git config --global --replace-all user.name "NombreUser"
+        <p>Se corrige el nombre del usuario</p>
+      </li>
+      <p>Y listo UwU ✨</p>
+      <li>
+        git show
+        <p>
+          Nos muestra los cambios que han existido sobre un archivo y es muy
+          útil para detectar cuándo se produjeron ciertos cambios, qué se rompió
+          y cómo lo podemos solucionar.
+        </p>
+      </li>
+      <li>
+        git log
+        <p>Muestra el historial de registros con detalles</p>
+      </li>
+      <li>
+        git log --stat
+        <p>
+          Nos muestra los cambios específicos de cada commit, desde el más
+          reciente al más viejo
+        </p>
+      </li>
+      <li>
+        git diff [code commit][code commit]
+        <p>Nos compara dos commit por código</p>
+      </li>
+    </ul>
+    <p>
+      Hasta acá todo bien, lo que bien ahora son comandos de control de
+      versiones muy importantes, como regresar, eliminar, modificar o crear
+      ramas.
+    </p>
+    <b><p>Vamos a intentar devolver el tiempo con git 😎</p></b>
+
+    <ul>
+      <li>
+        git reset [SHA 1] --soft
+        <p>
+          Volvemos a la version del commit indicado, borando los commit
+          posteriores, pero sin borrar los archivos o contenido ya escrito,
+          además, el contenido guardado en el área de staging permanece ahí,
+          listo para ser enviado al <span class="lAzul">repositorio git</span>
+        </p>
+      </li>
+      <li>
+        git reset --hard [SHA 1]
+        <p>
+          Volvemos a la version del commit indicado,
+          <span class="lRoja">Borrando todo</span> los commit posteriores y los
+          archivos a la version indicada
+        </p>
+      </li>
+      <li>
+        git reset --mixed [SHA 1]
+        <p>Este limina los cambios hasta el working area</p>
+      </li>
+      <li>
+        git reset HEAD
+        <p>
+          Este es el comando para sacar archivos del área de staging. No para
+          borrarlos ni nada de eso, solo para que los últimos cambios de estos
+          archivos no se envíen al último commit, a menos que cambiemos de
+          opinión y los incluyamos de nuevo en staging con git add, por
+          supuesto.
+        </p>
+      </li>
+      <li>
+        git rm --force [file]
+        <p>
+          Este limina los archivos del
+          <span class="lRoja">working directory</span> y del
+          <span class="lVerde">Staging area</span>, pero no del
+          <span class="lAzul">repository</span>
+        </p>
+      </li>
+      <li>
+        git rm --cached [file]
+        <p>
+          Eliminamos el archivo del <span class="lVerde">Staging area</span>,
+          para no hacerle commit, el archivo seguirá en el
+          <span class="lRoja">working directory</span>
+        </p>
+      </li>
+    </ul>
+    <h2>Conectando con GitHub</h2>
+    <ul>
+      <li>
+        git remote add [nombre] "URL"
+        <p>Guardar la URL del repositorio de GitHub con el nombre de origin</p>
+      </li>
+      <li>
+        git remote -v
+        <p>Verificar que la URL se haya guardado correctamente</p>
+      </li>
+      <li>
+        git pull origin master --allow-unrelated-histories
+        <p>
+          Traer la versión del repositorio remoto y hacer merge para crear un
+          commit con los archivos de ambas partes.
+        </p>
+      </li>
+      <li>
+        git push origin master
+        <p>
+          Hacer git push para guardar los cambios de nuestro repositorio local
+          en GitHub
+        </p>
+      </li>
+      <li>
+        git remote remove "name"
+        <p>Eliminar la URL que guardamos con ese nombre, ejemplo: "origin"</p>
+      </li>
+      <li>
+        ssh-keygen -t rsa -b 4096 -C "email"
+        <p>
+          Primero: Estar en la carpeta home de tu sistema, con el comando [cd ~]
+          <br />
+          Segundo: Seleccionar la carpeta donde se quiere guardar las llaves
+          <br />
+          Tercero: Poner una contraseña
+        </p>
+      </li>
+      <li>
+        eval $(ssh-agent -s)
+        <p>Evalúa que el proceso SSH esté corriendo</p>
+      </li>
+      <li>
+        ssh-add ruta-donde-guardaste-tu-llave-privada
+        <p>
+          Ya tendremos configurada nuestra llave privada para poder conectarnos
+          a través de SSH con GitHub
+        </p>
+      </li>
+      <li>
+        git remote set-url "ejemplo:origin" url-ssh-del-repositorio-en-github
+        <p>Añadir tu llave SSH a este “servidor”</p>
+      </li>
+      <p>
+        ¡Antes de hacer un commit, se deben traer las actualizaciones del
+        repositorio de GitHub! <br />
+        Priemro hacemos [git pull origin main] y luego [git push origin main]
+      </p>
+    </ul>
+    <h2>Tags</h2>
+    <p>
+      Los tags o etiquetas nos permiten asignar versiones a los commits con
+      cambios más importantes o significativos de nuestro proyecto.
+    </p>
+    <ul>
+      <li>
+        git tag -a nombre-del-tag -m "mensaje" id-del-commit
+        <p>Crear un nuevo tag y asignarlo a un commit</p>
+      </li>
+      <li>
+        git tag -d nombre-del-tag
+        <p>Borrar un tag en el repositorio local</p>
+      </li>
+      <li>
+        git tag o git show-ref --tags
+        <p>
+          Listar los tags de nuestro repositorio local, mostrando a qué commit
+          está relacionado
+        </p>
+      </li>
+      <li>
+        git push origin --tags
+        <p>Publicar un tag en el repositorio remoto</p>
+      </li>
+      <li>
+        git tag -d nombre-del-tag y git push origin :refs/tags/nombre-del-tag
+        <p>Borrar un tag del repositorio remoto</p>
+      </li>
+    </ul>
+    <h2>Manejo de Ramas</h2>
+    <p>
+      Las ramas nos permiten hacer cambios a nuestros archivos sin modificar la
+      versión principal (master). Puedes trabajar con ramas que nunca envías a
+      GitHub, así como pueden haber ramas importantes en GitHub que nunca usas
+      en el repositorio local
+    </p>
+    <ul>
+      <li>
+        git branch branchName
+        <p>Para crear una rama</p>
+      </li>
+      <li>
+        git checkout branchName
+        <p>Para movernos entre ramas 🐒</p>
+      </li>
+      <li>
+        git checkout [code commit] [file]
+        <p>
+          Podremos ver como era el archivo en ese entonces, hay que tener
+          cuidado con checkout, porque es otra forma de borrar las
+          actualizaciones si hacemos un commit
+        </p>
+      </li>
+      <li>
+        git push origin nombre-de-la-rama
+        <p>Mandar la rama al repositorio remoto</p>
+      </li>
+      <li>
+        gitk
+        <p>
+          Gitk fue el primer visor gráfico que se desarrolló para ver de manera
+          gráfica el historial de un repositorio de Git
+        </p>
+      </li>
+      <li>
+        git clone [url]
+        <p>Crea una copia local de un repositorio remoto</p>
+      </li>
+      <li>
+        git branch -D nombreRama
+        <p>Se utiliza para eliminar ramas en git</p>
+      </li>
+      <li>
+        git merge nombreRama
+        <p>
+          Este comando es súper importante, se utiliza cuando quieres unir los
+          cambios entre 2 ramas, el merge ocurre en la rama en la que se está
+          posicionado. Por lo tanto, la rama a fusionar se transforma en la
+          principal. Los merges también son commits. Los merges pueden generar
+          conflictos, esto aborta la acción y pide que soluciones el problema
+          manualmente, aceptando o rechazando los cambios que vienen. Los
+          archivos con conflictos por el comando git merge entran en un nuevo
+          estado que conocemos como Unmerged. Una vez solucionado el conflicto,
+          se debe hacer un commit.
+        </p>
+      </li>
+      <li>
+        git merge --abort
+        <p>Si nos hemos equivocado y queremos cancelar el merge</p>
+      </li>
+      <li>
+        git push [remote] --delete [branch]
+        <p>Este es el comando para borrar una branch remota</p>
+      </li>
+      <li>
+        git fetch [remote] [branch]
+        <p>
+          traer actualizaciones del servidor remoto y guardarlas en nuestro
+          repositorio local
+        </p>
+      </li>
+      <li>
+        git fetch -p
+        <p>Intenta sincronizar tu lista de branches</p>
+      </li>
+    </ul>
+    <h2>Pull request</h2>
+    <p>
+      Pull request es una funcionalidad de Github, al hacer un pull request, se
+      genera una conversación que pueden seguir los demás usuarios del
+      repositorio, así como autorizar y rechazar los cambios.
+    </p>
+    <ul>
+      <li>
+        <p>
+          Se trabaja en una rama paralela los cambios que se desean git checkout
+          -b [rama]
+        </p>
+      </li>
+      <li>
+        <p>Se hace un commit a la rama git commit -am 'Comentario'</p>
+      </li>
+      <li>
+        <p>Se suben al remoto los cambios git push origin [rama]</p>
+      </li>
+      <li>
+        <p>
+          En GitHub se hace el pull request comparando la rama master con la
+          rama del fix
+        </p>
+      </li>
+      <li>
+        <p>
+          Uno, o varios colaboradores revisan que el código sea correcto y dan
+          feedback
+        </p>
+      </li>
+      <li>
+        <p>
+          El colaborador hace los cambios que desea en la rama y lo vuelve a
+          subir al remoto (automáticamente jala la historia de los cambios que
+          se hagan en la rama, en remoto)
+        </p>
+      </li>
+      <li>
+        <p>Se aceptan los cambios en GitHub.</p>
+      </li>
+      <li>
+        <p>Se hace merge a master desde GitHub.</p>
+      </li>
+    </ul>
+
+    <h2>Para Buscar</h2>
+    <ul>
+      <li>
+        git grep
+        <p>
+          se usa para buscar texto en nuestros archivos del repositorio, puedes
+          ver la cantidad de veces que se usa una palabra, incluso incluir
+          expresiones regulares. <br />
+          Un ejemplo sería usar [git gre -n "palabra"] para ver en que archivos
+          y que líneas esta la palabra "palabra" o [git grep -c palabra] para
+          ver la cantidad de veces que se repite la palabra "palabra"
+        </p>
+      </li>
+    </ul>
+    <footer></footer>
+  </body>
+</html>

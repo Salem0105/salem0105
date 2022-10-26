@@ -1,0 +1,74 @@
+* {
+  font-family: "Lucida Sans Unicode";
+  color: white;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 5px;
+  padding: 5px;
+  background-color: #121f3d;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+summary,
+p {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/*Acomodar div*/
+.columna {
+  float: left;
+  display: block;
+  width: 50%;
+  padding-right: 5px;
+}
+
+.fila::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+img {
+  /* Para que sea responsiva */
+  width: 100%;
+}
+
+/*Decoración para cada comando y su descripción*/
+ul li p {
+  text-align: left;
+  font-weight: lighter;
+}
+
+li {
+  font-weight: bold;
+  margin-top: 10px;
+  color: #98ca3f;
+  /*color: #ff918e; */
+  text-align: left;
+  font-family: Verdana;
+}
+
+.lRoja {
+  font-weight: bold;
+  display: inline;
+  color: #ff4842;
+}
+
+.lVerde {
+  font-weight: bold;
+  display: inline;
+  color: #98ca3f;
+}
+
+.lAzul {
+  font-weight: bold;
+  display: inline;
+  color: #74caff;
+}
